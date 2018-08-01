@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #big1,#big2{
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        #box1,#box2{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+        #box1{
+            background-color: #ff9ad5;
+        }
+        #box2{
+            background-color: #6e6fff;
+        }
+        button{
+            background-color: #c8ff73;
+            width: 70px;
+            border: none;
+            height: 25px;
+            box-shadow: 3px 3px 3px #a6eff4;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="big1">
+    <button id="btn1">start跑</button>
+    <button id="btn2">停stop</button>
+    <div id="box1"></div>
+</div>
+<div id="big2">
+    <button id="btn3">start跑</button>
+    <button id="btn4">停stop</button>
+    <div id="box2"></div>
+</div>
+<script>
+      var btn1 = document.getElementById('btn1');
+      var btn2 = document.getElementById('btn2');
+      var box1 = document.getElementById('box1');
+      var index1 = 1200;
+      var timer1 = null;
+      btn1.onclick = function(){
+          clearInterval(timer1);
+        timer1 = setInterval(function(){
+              index1-=5;
+              box1.style.left=index1+'px';
+
+             if( index1<0){
+                 index1=0;
+             }
+           },30)
+      };
+    btn2.onclick = function(){
+        clearInterval(timer1);
+    };
+//    第二个
+      var btn3 = document.getElementById('btn3');
+      var btn4 = document.getElementById('btn4');
+      var box2 = document.getElementById('box2');
+      var index2 = 0;
+      var timer2 = null;
+      btn3.onclick = function(){
+          clearInterval(timer2);
+          timer2 = setInterval(function(){
+//            clearInterval(timer1);
+              index2+=5;
+              box2.style.left=index2+'px';
+              if( index2>1300){
+                  index2=1300;
+              }
+          },20)
+      };
+      btn4.onclick = function(){
+          clearInterval(timer2);
+      }
+</script>
+</body>
+</html>
